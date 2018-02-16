@@ -1,0 +1,56 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<body class="bg">
+  <div class="ui sidebar inverted vertical menu right" >
+
+    
+    <a class="item">
+      1
+    </a>
+    <a class="item">
+      2
+    </a>
+    <a class="item">
+      3
+    </a>
+  </div>
+  <div class="pusher">
+    
+
+  <sm-menu title="Chemical Company" class="inverted" background="#34373c" logo="https://i.imgur.com/wGe0Y73.png">
+    <a sm-item *ngFor="let item of items" [icon]="item.icon" onclick="this.DatabaseComponent.test();">{{item?.title}}</a>
+
+    <sm-menu class="menu right secondary">
+        <a sm-item href="#/elements/menu" 
+            image="https://i.imgur.com/BOszpaG.png">User Name</a>
+        <a sm-item icon="sidebar big" onclick="$('.ui.sidebar').sidebar('toggle');" ></a>
+    </sm-menu>
+</sm-menu>
+  
+<div style="text-align:center">
+
+
+
+
+  
+
+  <img width="150" alt="Logo" src="https://i.imgur.com/wGe0Y73.png">
+</div>
+
+
+
+
+<div style="text-align:center" class="cntr">
+
+ 
+
+  <app-database>
+    
+     </app-database>
+
+</div>
+
+
+
+
+</div>
+</body>

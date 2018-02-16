@@ -1,0 +1,106 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.Bodywhole{
+    margin: 0;
+    
+}
+
+    .bg{
+        background-color: #ededed;
+    }
+
+.halfcntr{
+    min-width: 150px;
+    max-width: 100%;
+    width: 100%;
+    margin:0 auto;
+}
+
+.cntr{
+    min-width: 150px;
+    max-width: 1000px;
+    width: 100%;
+    margin:0 auto;
+}
+
+
+.ui-widget input {
+    width: 100%;
+}
+
+.tabs{
+    background-color: rgb(166, 182, 211);
+    font-weight: 400;
+    color: black;
+}
+
+.ui-datatable {
+    text-align: left;
+}
+
+.ui-datatable-thead {
+    text-align: left;
+}
+
+
+[_nghost-c2] table{
+    background-color: #69a6d1;
+    padding: 20px;
+    border-radius: 7px;
+    border-collapse: unset !important;
+}
+
+
+[_nghost-c2] table tr td, [_nghost-c2] table tr th {
+    font-size: .875em;
+    margin: 0;
+    padding: .5em 1em;
+    border: 1px solid #e9ebec;
+}
+ 
+
+.ui.inverted.menu{
+border: 0 solid transparent;
+border-radius: 0;
+background: #34373c !important;
+box-shadow: none;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+ .mulch{
+    border: 1px solid #ccc !important;
+    margin-bottom: 16px !important;
+ }
+
+ .dupip{
+    border: 1px solid #ccc !important;
+    margin-bottom: 16px !important;
+ }
+
+.votedisplay{
+    padding: .78571429em 10em .78571429em !important;
+}
+
+ .margintoggle{
+    padding-bottom: 15px !important;
+    padding-top: 15px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+ }
+
+ .box{
+    background-color: #34C7C7;
+    padding: 21px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    border-radius: 3px;
+ }

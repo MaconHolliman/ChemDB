@@ -1,0 +1,113 @@
+<div class="halfcntr">
+
+
+
+    
+ 
+    <br>
+
+      <button (click)="chemicalShow = !chemicalShow">{{chemicalShow ? 'Close Chemicals Table' : 'Show Chemicals Table'}}</button>
+      <button (click)="citationShow = !citationShow">{{citationShow ? 'Close Citations Table' : 'Show Citations Table'}}</button>
+      <button (click)="toxicityShow = !toxicityShow">{{toxicityShow ? 'Close Toxicity Table' : 'Show Toxicity Table'}}</button>
+      <button (click)="targetShow = !targetShow">{{targetShow ? 'Close Targets Table' : 'Show Targets Table'}}</button>
+      <button (click)="experimentShow = !experimentShow">{{experimentShow ? 'Close Experiments Table' : 'Show Experiments Table'}}</button>
+
+      <br>
+      <div *ngIf="chemicalShow">
+      
+      <h3>Chemicals Database</h3>
+      <p-dataTable *ngIf="visible" [value]="Items" sortMode="multiple" [resizableColumns]="true" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+          <p-column *ngFor="let iCol of iCols" [field]="iCol.field" [header]="iCol.header" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+      </p-dataTable>
+      
+      <br>
+      
+      </div>
+
+      
+      <br>
+      <div *ngIf="citationShow">
+      
+      <h3>Citations Database</h3>
+      <p-dataTable *ngIf="visible" [value]="Items" sortMode="multiple" [resizableColumns]="true" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+          <p-column *ngFor="let cCol of cCols" [field]="cCol.field" [header]="cCol.header" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+      </p-dataTable>
+      
+      <br>
+      
+      </div>
+
+            
+      <br>
+      <div *ngIf="toxicityShow">
+      
+      <h3>Toxicity Database</h3>
+      <p-dataTable *ngIf="visible" [value]="Items" sortMode="multiple" [resizableColumns]="true" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+          <p-column *ngFor="let tCol of tCols" [field]="tCol.field" [header]="tCol.header" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+      </p-dataTable>
+      
+      <br>
+      
+      </div>
+
+
+     
+      <br>
+      <div *ngIf="targetShow">
+      
+      <h3>Targets Database</h3>
+      <p-dataTable *ngIf="visible" [value]="Items" sortMode="multiple" [resizableColumns]="true" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+          <p-column *ngFor="let taCol of taCols" [field]="taCol.field" [header]="taCol.header" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+      </p-dataTable>
+      
+      <br>
+      
+      </div>
+
+
+
+      
+      <br>
+      <div *ngIf="experimentShow">
+      
+      <h3>Experiments Database</h3>
+      <p-dataTable *ngIf="visible" [value]="Items" sortMode="multiple" [resizableColumns]="true" [rows]="10" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[5,10,20]">
+          <p-column *ngFor="let eCol of eCols" [field]="eCol.field" [header]="eCol.header" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+      </p-dataTable>
+      
+      <br>
+      
+      </div>      
+  
+
+</div>
+
+
+
+
+
+
+<div *ngIf="show">Just an example</div>
+
+ <div>
+   <form class="cntr box" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate *ngIf="show">
+      
+    
+     
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Example field" ng-model="title" name="question" ngModel required #first="ngModel"></textarea>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Example field" ng-model="optionOne" name="optOne" ngModel required #first="ngModel"></textarea>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Example field" ng-model="optionTwo" name="optTwo" ngModel required #first="ngModel"></textarea>
+        </mat-form-field>
+
+       
+ 
+    </form>
+
+    
+    
+    </div>
