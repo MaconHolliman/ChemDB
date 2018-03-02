@@ -13,7 +13,7 @@ import {DatabaseComponent} from './database/database.component';
 export class AppComponent {
   title = 'Chems n\' Stuff';
 
-  
+  shouldRun: true;
  
 }
 

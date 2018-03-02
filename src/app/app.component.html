@@ -1,56 +1,27 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<body class="bg">
-  <div class="ui sidebar inverted vertical menu right" >
 
-    
-    <a class="item">
-      1
-    </a>
-    <a class="item">
-      2
-    </a>
-    <a class="item">
-      3
-    </a>
-  </div>
-  <div class="pusher">
-    
+<div class="Main"> 
 
-  <sm-menu title="Chemical Company" class="inverted" background="#34373c" logo="https://i.imgur.com/wGe0Y73.png">
-    <a sm-item *ngFor="let item of items" [icon]="item.icon" onclick="this.DatabaseComponent.test();">{{item?.title}}</a>
-
-    <sm-menu class="menu right secondary">
-        <a sm-item href="#/elements/menu" 
-            image="https://i.imgur.com/BOszpaG.png">User Name</a>
-        <a sm-item icon="sidebar big" onclick="$('.ui.sidebar').sidebar('toggle');" ></a>
-    </sm-menu>
-</sm-menu>
+  <mat-toolbar class="TopNav">
+    <mat-toolbar-row>
+        <span>Chemical DB</span>
+        <span class="example-spacer"></span>
+        <mat-icon class="example-icon">favorite</mat-icon>
+      </mat-toolbar-row>
+    </mat-toolbar>
   
-<div style="text-align:center">
+<mat-sidenav-container class="SideNav">
+
+  <mat-sidenav class = "SideNav" mode="side" opened>
+
+  </mat-sidenav>
+
+</mat-sidenav-container>
 
 
 
 
-  
-
-  <img width="150" alt="Logo" src="https://i.imgur.com/wGe0Y73.png">
-</div>
-
-
-
-
-<div style="text-align:center" class="cntr">
-
- 
-
-  <app-database>
-    
-     </app-database>
-
-</div>
-
-
+<div class="container-fluid mainSection"> Testing </div>
 
 
 </div>
-</body>
+

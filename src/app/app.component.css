@@ -1,5 +1,29 @@
-h1 {
-    color: #369;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 250%;
-  }
+.SideNav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 240px;
+  background-color: #263238;
+}
+
+.TopNav {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 47px;
+  width: 100%;
+  background-color: #263238;
+  border: 1px solid #344147;
+  color: #26c6da;
+}
+
+.mainSection {
+  margin-left: 240px;
+  margin-top: 47px;
+}

@@ -5,7 +5,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { NgSemanticModule } from "ng-semantic";
 import { NgModel } from '@angular/forms';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
@@ -42,7 +43,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     InputTextareaModule,
     ButtonModule,
     DataGridModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
