@@ -2,6 +2,9 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .Body{
-
+    background-image: url("hex.jpg");
+     background-repeat: no-repeat;
+      background-size: cover;
+     background-attachment: fixed;
     background-color: #383f48;
 }
