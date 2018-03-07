@@ -8,6 +8,8 @@ import { NgModel } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import {DataTableModule,SharedModule,DialogModule,InputTextModule,InputTextareaModule,ButtonModule,DataGridModule,OverlayPanelModule} from 'primeng/primeng';
@@ -45,7 +47,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     DataGridModule,
     OverlayPanelModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
