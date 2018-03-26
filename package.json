@@ -26,6 +26,7 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
     "ng-semantic": "^1.1.13",
     "ng2-smart-table": "^1.2.2",
     "primeng": "^5.0.0",

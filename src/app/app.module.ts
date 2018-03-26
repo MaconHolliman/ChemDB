@@ -7,6 +7,7 @@ import { NgSemanticModule } from "ng-semantic";
 import { NgModel } from '@angular/forms';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
 
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
@@ -48,7 +49,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     OverlayPanelModule,
     MatToolbarModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
