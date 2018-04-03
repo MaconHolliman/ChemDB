@@ -1,17 +1,89 @@
-
 <div class="Main"> 
 
   <mat-toolbar class="TopNav">
+    
     <mat-toolbar-row>
-        <span>Chemical DB</span>
+        <span  class="name">Ken<sup>2</sup>Mastry </span>
         <span class="example-spacer"></span>
-        <mat-icon class="example-icon">favorite</mat-icon>
+
+      
+
+         <div class="User" (click)="loginShow = !loginShow">
+
+          <a  class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-user"></span> User
+          </a>
+
+
+         </div>
+      
+       <form   class="search-box" >
+          <input   class="search-box-input" type="text" required="required">
+          <button type="reset" class="delete"></button>
+         
+           </form>
+
+          
+
+           
+
       </mat-toolbar-row>
     </mat-toolbar>
   
 <mat-sidenav-container class="SideNav">
 
   <mat-sidenav class = "SideNav" mode="side" opened>
+
+
+      <div class="SideMain">
+
+
+    <input type="checkbox" id="c1" name="cc" (click)="chemicalShow = !chemicalShow"/>
+    <label for="c1"><span></span>Chemical</label>
+    <br>
+    
+      
+    <input type="checkbox" id="c2" name="cc" />
+    <label for="c2"><span></span>Assay</label>
+    <br>
+    <input type="checkbox" id="c3" name="cc" />
+    <label for="c3"><span></span>Toxicity</label>
+    <br>
+    <input type="checkbox" id="c4" name="cc" />
+    <label for="c4"><span></span>Citation</label>
+
+    <form class="form-horizontal">
+        <div class="form-group checkbox">
+          <div class="col-sm-1">
+          </div>
+          <button (click)="getAssay();" type="button" class="btn btn-default"><span class="fa fa-square-o"></span> Assay</button>
+        </div>
+        <div class="form-group checkbox">
+          <div class="col-sm-1">
+          </div>
+          <button (click)="getCitation();" type="button" class="btn btn-default"><span class="fa fa-square-o"></span> Citation</button>
+        </div>
+        <div class="form-group checkbox">
+          <div class="col-sm-1">
+          </div>
+          <button (click)="getTarget();" type="button" class="btn btn-default"><span class="fa fa-square-o"></span> Target</button>
+        </div>
+        <div class="form-group checkbox">
+            <div class="col-sm-1">
+            </div>
+            <button (click)="getCitationID();" type="button" class="btn btn-default"><span class="fa fa-square-o"></span> Citation ID</button>
+          </div>
+          <div class="form-group checkbox">
+              <div class="col-sm-1">
+              </div>
+              <button (click)="getTargetID();" type="button" class="btn btn-default"><span class="fa fa-square-o"></span> Target ID</button>
+            </div>
+      </form>
+
+     
+
+
+      </div>
 
   </mat-sidenav>
 
@@ -20,76 +92,184 @@
 
 
 
-<div class="container-fluid colm1">
-  <div class="row content">
-      <br>
-<div class = "col-sm-2"></div>
-    <div class="col-sm-9 ">
-      <h1 class="marolbl">Adzenys XR-ODT </h1>
-      <br>
-      <div class="well longtext">
-        <h1> Description: </h1>
-        <p class="dark">Chemistry is the scientific discipline involved with compounds composed of atoms, i.e. elements, and molecules, i.e. combinations of atoms: their composition, structure, properties, behavior and the changes they undergo during a reaction with other compounds.[1][2] Chemistry addresses topics such as how atoms and molecules interact via chemical bonds to form new chemical compounds. There are four types of chemical bonds: covalent bonds, in which compounds share one or more electron(s); ionic bonds, in which a compound donates one or more electrons to another compound to produce ions: cations and anions; hydrogen bonds; and Van der Waals force bonds. See glossary of chemistry.</p>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well longtext">
-            <h4 class="title">CID:</h4>
-            <p class="dark">4564546548</p>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="well longtext">
-            <h4 class="title">Molecular Formula:</h4>
-            <p class="dark">C64H99N7O20S2</p>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="well longtext">
-            <h4 class="title">Molecular Weight:</h4>
-            <p class="dark">10 Million</p>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="well longtext">
-            <h4 class="title">CASN:</h4>
-            <p class="dark">Not sure what this is</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="well longtext">
-            <h4 class="title"> IUPAC Name: </h4>
-            <p class="dark">(2S)-2-aminobutanedioic acid;1-phenylpropan-2-amine;(2S)-1-phenylpropan-2-amine;sulfuric acid;(2S,3S,4S,5R)-2,3,4,5-tetrahydroxyhexanedioic acid</p>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="well longtext">
-                <h4 class="title"> Synonym(s): </h4>
-            <p class="dark">Text</p>
-            <p class="dark">Text</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="well longtext">
-            <h4 class="title">Smiles:</h4>
-            <p class="dark">C[C@@H](CC1=CC=CC=C1)N.C[C@@H](CC1=CC=CC=C1)N.C[C@@H](CC1=CC=CC=C1)N.C[C@@H](CC1=CC=CC=C1)N.CC(CC1=CC=CC=C1)N.CC(CC1=CC=CC=C1)N.C([C@@H](C(=O)O)N)C(=O)O.[C@H]([C@@H]([C@@H](C(=O)O)O)O)([C@H](C(=O)O)O)O.OS(=O)(=O)O.OS(=O)(=O)O</p>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="well longtext">
-            <h4 class="title"> More Information: </h4>
-            <p><a  class="dark" href="experiments"> Experiments</a></p>
-            <p><a  class="dark" href="target">Target (MOA)</a></p>
-            <p><a  class="dark" href="Toxicity">Toxicity</a></p>
-          </div>
-        </div>
 
-      </div>
+
+<div class="container-fluid mainSection" *ngIf="chemicalShow">
+  <div class="row content">
+
+
+      
+    <br>
+
+
+
+
+    <div class="col-sm-12">
+
+        <div class="row">
+
+    <div class="col-sm-5">
+        <div class="well longtext">
+        <h1 class="marolbl">{{chemicalName}}</h1>
+        </div>
     </div>
+
+    
+
+    </div>
+    </div>
+    
   </div>
 
+      
+       <div class="row">
 
+     
+
+        <div class="col-sm-2">
+          <div  class="well longtext">
+              <h4 class="title">CID</h4>
+              <p class="dark">{{CID}}</p>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="well longtext">
+              <h4 class="title">Molecular Formula</h4>
+              <p class="dark">{{molecularFormula}}</p>
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="well longtext">
+              <h4 class="title">Molecular Weight</h4>
+              <p class="dark">{{molecularWeight}}</p>
+          </div>
+        </div>
+        
+        <div class="col-sm-3">
+          <div class="well longtext">
+              <h4 class="title">CASN</h4>
+              <p class="dark">{{CASN}}</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        
+        <div class="col-sm-7">
+          <div class="well longtext">
+              <h4 class="title"> IUPACName </h4>
+              <p class="dark">{{IUPACName}}</p>
+           
+          </div>
+        </div>
+
+        <div class="col-sm-3">
+          <div class="well longtext">
+              <h4 class="title"> Synonym(s) </h4>
+          <p class="dark">{{synonyms}}</p>
+          </div>
+        </div>
+
+        
+        <div class="col-sm-2" (click)="combineAssay();">
+            <div class="well longtext">
+                <h4 class="title"> More Info </h4>
+                <p><a  class="dark" href="experiments"> Experiments</a></p>
+                <p><a  class="dark" href="target">Target (MOA)</a></p>
+                <p><a  class="dark" href="Toxicity">Toxicity</a></p>
+            </div>
+          </div>
+     
+         </div>
+
+         <div class="row">
+
+        <div class="col-sm-8">
+          <div class="well longtext">
+              <h4 class="title">Smiles</h4>
+              <p class="dark">{{SMILES}}</p>
+          
+          </div>
+        </div>
+
+        </div>
+
+     
+
+        
+      
+        
+  
+
+
+          
+
+
+</div>
+
+<body class="login"  *ngIf="loginShow">
+    <div class="container">
+      <div class="login-container-wrapper clearfix">
+        <ul class="switcher clearfix">
+          <li class="first logo active" data-tab="login">					
+              <a>Login</a>			
+          </li>
+          <li class="second logo" data-tab="sign_up">
+              <a>Sign Up</a>	
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="login">
+            <form class="form-horizontal login-form">
+              <div class="form-group relative">
+                <input class="form-control input-lg" id="login_username" placeholder="E-mail Address" required="" type="email"> <i class="fa fa-user"></i>
+              </div>
+              <div class="form-group relative">
+                <input class="form-control input-lg" id="login_password" placeholder="Password" required="" type="password"> <i class="fa fa-lock"></i>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-success btn-lg btn-block" type="submit">Login</button>
+              </div>
+              <div class="checkbox checkbox-success">
+                <input id="stay-sign" type="checkbox">
+                <label for="stay-sign">Stay signed in</label>
+              </div>
+              <hr />
+              <div class="text-center">
+                <label><a href="">Forgot your password?</a></label>
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane" id="sign_up">
+            <form class="form-horizontal login-form">
+              <div class="form-group relative">
+                <input class="form-control input-lg" id="login_username" placeholder="E-mail Address" required="" type="email"> <i class="fa fa-user"></i>
+              </div>
+              <div class="form-group relative">
+                <input class="form-control input-lg" id="login_password" placeholder="Password" required="" type="password"> <i class="fa fa-lock"></i>
+              </div>
+              <div class="form-group relative">
+                <input class="form-control input-lg" id="login_password" placeholder="Repeat Password" required="" type="password"> <i class="fa fa-lock"></i>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-success btn-lg btn-block" type="submit">Sign Up</button>
+              </div>
+              <div class="checkbox checkbox-success">
+                <input id="agree-terms" type="checkbox">
+                <label for="agree-terms"> Agree our terms</label>
+              </div>
+              <hr>
+              <div class="text-center">
+                <label><a href="#">Already Member?</a></label>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</div>
