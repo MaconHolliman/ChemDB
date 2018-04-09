@@ -1,7 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files  */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .Body{
-
+    background-image: url("https://i.imgur.com/Oy9hbXS.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     background-color: #383f48;
 }
+
+.page-wrap{
+    width: 100%; 
+    margin: 15px auto; 
+    position: relative;
+  }
