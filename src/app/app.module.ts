@@ -22,7 +22,13 @@ import {HttpClientModule} from '@angular/common/http';
 import { DatabaseComponent } from './database/database.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import {MatTabsModule} from '@angular/material/tabs';
+import {DataListModule} from 'primeng/datalist';
+import {DataViewModule} from 'primeng/dataview';
+import {DropdownModule} from 'primeng/dropdown';
 
+import {MatRadioModule} from '@angular/material/radio';
+
+import {SelectItem} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -50,7 +56,11 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatToolbarModule,
     MatIconModule,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    DataListModule,
+    DataViewModule,
+    DropdownModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

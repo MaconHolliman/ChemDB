@@ -8,6 +8,8 @@ import {MatTableModule} from '@angular/material/table';
 /// <reference path ="../typings/jquery/jquery.d.ts"/>
 import * as Jquery from 'jquery';
 
+import {SelectItem} from 'primeng/api';
+
 import {DatabaseComponent} from './database/database.component';
 
 @Component({
@@ -30,6 +32,9 @@ export class AppComponent {
 
   combinedAssayTarget: any;
 
+  searchShow = true;
+  targetSearchShow = true;
+
   res: any;
 
   assay: any;
@@ -37,12 +42,96 @@ export class AppComponent {
   target: any;
 
   citationID: any;
+  chemical: any;
   targetID: any;
+
+  chemicalSearch: any;
+  targetSearch: any;
 
   shouldRun: true;
 
-
   
+  favoriteSeason: string;
+
+  chemicalFilters = [
+    'Substance Name',
+    'Substance CASRN',
+    'SMILES',
+  ];
+
+  targetFilters = [
+    'Target ID',
+    'Target Name',
+  ];
+
+  targetFilterChosen: string = "";
+  
+  targetIdSearch: boolean;
+
+  chemicalFilterChosen: string = "";
+  substanceNameSearch: boolean;
+  CASRNSearch: boolean;
+  SMILESSearch: boolean;
+
+  updateFilterChemical(){
+    if(this.favoriteSeason == "SMILES")
+    {
+      this.SMILESSearch = true;
+      this.CASRNSearch = false;
+      this.substanceNameSearch = false;
+    }
+    if(this.favoriteSeason == "Substance CASRN")
+    {
+      this.SMILESSearch = false;
+      this.CASRNSearch = true;
+      this.substanceNameSearch = false;
+    }
+    if(this.favoriteSeason == "Substance Name")
+    {
+      this.SMILESSearch = false;
+      this.CASRNSearch = false;
+      this.substanceNameSearch = true;
+    }
+  }
+
+
+  updateFilterTarget(){
+    if(this.favoriteSeason == "Target ID")
+    {
+      this.targetSearch = false;
+      this.targetIdSearch = true;
+    }
+    if(this.favoriteSeason == "Target Name")
+    {
+      this.targetSearch = true;
+      this.targetIdSearch = false;
+    }
+  
+  }
+
+
+  //Search Table Variables
+  sortKey: string;
+
+  sortField: string;
+
+  sortOrder: number;
+
+  sortOptions: any;
+  //sortOptions: selectItem[];
+  
+  display: boolean = false;
+
+  showDialog() {
+      this.display = true;
+  }
+
+  //End search table variables
+
+
+  FilterBySubstance(){
+    document.getElementById("searchChange").setAttribute("filterBy", "Substance_CASRN");
+  }
   
  
 
@@ -53,10 +142,16 @@ export class AppComponent {
 
 ngOnInit() {
  
+  this.sortOptions = [
+    {label: 'Newest First', value: '!year'},
+    {label: 'Oldest First', value: 'year'},
+    {label: 'Brand', value: 'brand'}
+];
     //this.getAssay();
     //this.getCitation();
     //this.getTarget();
     //this.getTargetID();
+    //this.getChemical();
     //this.getCitationID();
 
     $('.checkbox .btn').on('click', function() {
@@ -98,6 +193,9 @@ ngOnInit() {
     console.log("Target_Output");
     console.log(this.target);
     });
+
+    this.targetIdSearch = false;
+    this.targetSearch = false;
   }
 
   getCitation(): void {
@@ -124,6 +222,17 @@ ngOnInit() {
     });
   }
 
+
+  getChemical(): void {
+    this.http.get('http://localhost:3000/api/chemical').subscribe(data => {
+    this.chemical = data;
+    console.log("Chemical _Output");
+    console.log(this.chemical);
+    });
+    this.SMILESSearch = false;
+    this.CASRNSearch = false;
+    this.substanceNameSearch = false;
+  }
   combineAssay(){
     //this.res = this.assay.map(x => Object.assign(x, this.target.find(y => y.id == x.id)));
 

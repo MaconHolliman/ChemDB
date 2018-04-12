@@ -43,17 +43,37 @@
     <label for="c1"><span></span>Chemical</label>
     <br>
     
-      
-    <input type="checkbox" id="c2" name="cc" />
-    <label for="c2"><span></span>Assay</label>
-    <br>
-    <input type="checkbox" id="c3" name="cc" />
-    <label for="c3"><span></span>Toxicity</label>
-    <br>
-    <input type="checkbox" id="c4" name="cc" />
-    <label for="c4"><span></span>Citation</label>
 
-    <form class="form-horizontal">
+      
+    <input type="checkbox" id="c2" name="cc" (click)="substanceNameSearch = !substanceNameSearch" />
+    <label for="c2"><span></span>Substance Name</label>
+    <br>
+    <input type="checkbox" id="c3" name="cc" (click)="CASRNSearch = !CASRNSearch"/>
+    <label for="c3"><span></span>CASRN</label>
+    <br>
+    <input type="checkbox" id="c4" name="cc" (click)="SMILESSearch = !SMILESSearch" />
+    <label for="c4"><span></span>SMILES</label>
+
+    
+
+        
+
+        
+        
+
+        <div class="form-group checkbox">
+            <div class="col-sm-1">
+            </div>
+            <button (click)="getChemical();" type="button" class="btn btn-default"><span class="fa fa-square-o"></span> Chemical</button>
+          </div>
+
+          <mat-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason" (click)="updateFilterChemical()">
+              <mat-radio-button class="example-radio-button" *ngFor="let chemicalFilters of chemicalFilters" [value]="chemicalFilters">
+                {{chemicalFilters}}
+              </mat-radio-button>
+            </mat-radio-group>
+            
+
         <div class="form-group checkbox">
           <div class="col-sm-1">
           </div>
@@ -69,6 +89,16 @@
           </div>
           <button (click)="getTarget();" type="button" class="btn btn-default"><span class="fa fa-square-o"></span> Target</button>
         </div>
+
+
+        <mat-radio-group class="example-radio-group" [(ngModel)]="chosenTargetFilter" (click)="updateFilterTarget()">
+          <mat-radio-button class="example-radio-button" *ngFor="let targetFilters of targetFilters" [value]="targetFilters">
+            {{targetFilters}}
+          </mat-radio-button>
+        </mat-radio-group>
+        
+
+
         <div class="form-group checkbox">
             <div class="col-sm-1">
             </div>
@@ -79,16 +109,324 @@
               </div>
               <button (click)="getTargetID();" type="button" class="btn btn-default"><span class="fa fa-square-o"></span> Target ID</button>
             </div>
-      </form>
+
+            
+      
 
      
 
 
       </div>
 
+      
+
   </mat-sidenav>
 
 </mat-sidenav-container>
+
+
+
+
+
+
+    <div class="container-fluid mainSection" *ngIf="searchShow">
+        <div class="row content">
+      
+          
+
+ 
+          <p-dataView #dv *ngIf="substanceNameSearch" [value]="chemical" id="searchChange" [paginator]="true" [rows]="5" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="Substance_Name">
+            
+              
+            
+              <p-header>
+                  <input type="search" pInputText placeholder="Substance Name" (keyup)="dv.filter($event.target.value)">
+              </p-header>
+
+              <ng-template let-chemical let-i="index" pTemplate="listItem">
+                  <div class="ui-g chemical-item" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                      <div class="ui-g-12 ui-md-3" style="text-align:center">
+                          <img src="http://n2s.openmolecules.org/?name={{chemical.Structure_SMILES}}" width="200px">
+                      </div>
+                      <div class="ui-g-12 ui-md-6 chemical-details">
+                          <div class="ui-g">
+                              <div class="ui-g-2 ui-sm-6">Substance Name: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Substance_Name}}</div>
+                              
+                              <div class="ui-g-2 ui-sm-6">CASRN: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Substance_CASRN}}</div>
+                              
+                              <div class="ui-g-2 ui-sm-6">SMILES: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Structure_SMILES}}</div>
+
+                              <div class="ui-g-2 ui-sm-6">Formula: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Structure_Formula}}</div>
+                              
+                              <div class="ui-g-2 ui-sm-6">MolWt: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Structure_MolWt}}</div>
+                              
+                              <div class="ui-g-2 ui-sm-6">InChI: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Structure_InChI}}</div>
+
+                              
+                          </div>
+                      </div>
+                     
+  
+                      
+                  </div>
+              </ng-template>
+  
+            </p-dataView>
+      
+            
+           
+            <p-dataView #dv *ngIf="CASRNSearch" [value]="chemical" id="searchChange" [paginator]="true" [rows]="5" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="Substance_CASRN">
+            
+              
+            
+                <p-header>
+                    <input type="search" pInputText placeholder="CASRN" (keyup)="dv.filter($event.target.value)">
+                </p-header>
+  
+                <ng-template let-chemical let-i="index" pTemplate="listItem">
+                    <div class="ui-g chemical-item" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                        <div class="ui-g-12 ui-md-3" style="text-align:center">
+                            <img src="http://n2s.openmolecules.org/?name={{chemical.Structure_SMILES}}" width="200px">
+                        </div>
+                        <div class="ui-g-12 ui-md-8 chemical-details">
+                            <div class="ui-g">
+                                <div class="ui-g-2 ui-sm-6">Substance Name: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Substance_Name}}</div>
+                                
+                                <div class="ui-g-2 ui-sm-6">CASRN: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Substance_CASRN}}</div>
+                                
+                                <div class="ui-g-2 ui-sm-6">SMILES: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Structure_SMILES}}</div>
+  
+                                <div class="ui-g-2 ui-sm-6">Formula: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Structure_Formula}}</div>
+                                
+                                <div class="ui-g-2 ui-sm-6">MolWt: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Structure_MolWt}}</div>
+                                
+                                <div class="ui-g-2 ui-sm-6">InChI: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Structure_InChI}}</div>
+  
+                                
+                            </div>
+                        </div>
+                       
+    
+                        
+                    </div>
+                </ng-template>
+    
+              </p-dataView>
+      
+
+              <p-dataView #dv *ngIf="SMILESSearch" [value]="chemical" id="searchChange" [paginator]="true" [rows]="5" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="Structure_SMILES">
+            
+              
+            
+                  <p-header>
+                      <input type="search" pInputText placeholder="SMILES" (keyup)="dv.filter($event.target.value)">
+                  </p-header>
+    
+                  <ng-template let-chemical let-i="index" pTemplate="listItem">
+                      <div class="ui-g chemical-item" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                          <div class="ui-g-12 ui-md-3" style="text-align:center">
+                              <img src="http://n2s.openmolecules.org/?name={{chemical.Structure_SMILES}}" width="200px">
+                          </div>
+                          <div class="ui-g-12 ui-md-8 chemical-details">
+                              <div class="ui-g">
+                                  <div class="ui-g-2 ui-sm-6">Substance Name: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Substance_Name}}</div>
+                                  
+                                  <div class="ui-g-2 ui-sm-6">CASRN: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Substance_CASRN}}</div>
+                                  
+                                  <div class="ui-g-2 ui-sm-6">SMILES: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Structure_SMILES}}</div>
+    
+                                  <div class="ui-g-2 ui-sm-6">Formula: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Structure_Formula}}</div>
+                                  
+                                  <div class="ui-g-2 ui-sm-6">MolWt: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Structure_MolWt}}</div>
+                                  
+                                  <div class="ui-g-2 ui-sm-6">InChI: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Structure_InChI}}</div>
+    
+                                  
+                              </div>
+                          </div>
+                         
+      
+                          
+                      </div>
+                  </ng-template>
+      
+                </p-dataView>
+
+      
+      </div>
+      </div>
+
+
+
+
+
+
+      <div class="container-fluid mainSection" *ngIf="targetSearchShow">
+        <div class="row content">
+      
+          
+
+ 
+          <p-dataView #dv *ngIf="targetIdSearch" [value]="target" id="searchChange" [paginator]="true" [rows]="5" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="target_id">
+            
+              
+            
+              <p-header>
+                  <input type="search" pInputText placeholder="Substance Name" (keyup)="dv.filter($event.target.value)">
+              </p-header>
+
+              <ng-template let-chemical let-i="index" pTemplate="listItem">
+                  <div class="ui-g chemical-item" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                      <div class="ui-g-12 ui-md-3" style="text-align:center">
+                          <img src="http://n2s.openmolecules.org/?name={{chemical.Structure_SMILES}}" width="200px">
+                      </div>
+                      <div class="ui-g-12 ui-md-6 chemical-details">
+                          <div class="ui-g">
+                              <div class="ui-g-2 ui-sm-6">Substance Name: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Substance_Name}}</div>
+                              
+                              <div class="ui-g-2 ui-sm-6">CASRN: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Substance_CASRN}}</div>
+                              
+                              <div class="ui-g-2 ui-sm-6">SMILES: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Structure_SMILES}}</div>
+
+                              <div class="ui-g-2 ui-sm-6">Formula: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Structure_Formula}}</div>
+                              
+                              <div class="ui-g-2 ui-sm-6">MolWt: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Structure_MolWt}}</div>
+                              
+                              <div class="ui-g-2 ui-sm-6">InChI: </div>
+                              <div class="ui-g-10 ui-sm-6">{{chemical.Structure_InChI}}</div>
+
+                              
+                          </div>
+                      </div>
+                     
+  
+                      
+                  </div>
+              </ng-template>
+  
+            </p-dataView>
+      
+            
+           
+            <p-dataView #dv *ngIf="CASRNSearch" [value]="chemical" id="searchChange" [paginator]="true" [rows]="5" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="Substance_CASRN">
+            
+              
+            
+                <p-header>
+                    <input type="search" pInputText placeholder="CASRN" (keyup)="dv.filter($event.target.value)">
+                </p-header>
+  
+                <ng-template let-chemical let-i="index" pTemplate="listItem">
+                    <div class="ui-g chemical-item" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                        <div class="ui-g-12 ui-md-3" style="text-align:center">
+                            <img src="http://n2s.openmolecules.org/?name={{chemical.Structure_SMILES}}" width="200px">
+                        </div>
+                        <div class="ui-g-12 ui-md-8 chemical-details">
+                            <div class="ui-g">
+                                <div class="ui-g-2 ui-sm-6">Substance Name: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Substance_Name}}</div>
+                                
+                                <div class="ui-g-2 ui-sm-6">CASRN: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Substance_CASRN}}</div>
+                                
+                                <div class="ui-g-2 ui-sm-6">SMILES: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Structure_SMILES}}</div>
+  
+                                <div class="ui-g-2 ui-sm-6">Formula: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Structure_Formula}}</div>
+                                
+                                <div class="ui-g-2 ui-sm-6">MolWt: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Structure_MolWt}}</div>
+                                
+                                <div class="ui-g-2 ui-sm-6">InChI: </div>
+                                <div class="ui-g-10 ui-sm-6">{{chemical.Structure_InChI}}</div>
+  
+                                
+                            </div>
+                        </div>
+                       
+    
+                        
+                    </div>
+                </ng-template>
+    
+              </p-dataView>
+      
+
+              <p-dataView #dv *ngIf="SMILESSearch" [value]="chemical" id="searchChange" [paginator]="true" [rows]="5" [sortField]="sortField" [sortOrder]="sortOrder" filterBy="Structure_SMILES">
+            
+              
+            
+                  <p-header>
+                      <input type="search" pInputText placeholder="SMILES" (keyup)="dv.filter($event.target.value)">
+                  </p-header>
+    
+                  <ng-template let-chemical let-i="index" pTemplate="listItem">
+                      <div class="ui-g chemical-item" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+                          <div class="ui-g-12 ui-md-3" style="text-align:center">
+                              <img src="http://n2s.openmolecules.org/?name={{chemical.Structure_SMILES}}" width="200px">
+                          </div>
+                          <div class="ui-g-12 ui-md-8 chemical-details">
+                              <div class="ui-g">
+                                  <div class="ui-g-2 ui-sm-6">Substance Name: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Substance_Name}}</div>
+                                  
+                                  <div class="ui-g-2 ui-sm-6">CASRN: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Substance_CASRN}}</div>
+                                  
+                                  <div class="ui-g-2 ui-sm-6">SMILES: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Structure_SMILES}}</div>
+    
+                                  <div class="ui-g-2 ui-sm-6">Formula: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Structure_Formula}}</div>
+                                  
+                                  <div class="ui-g-2 ui-sm-6">MolWt: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Structure_MolWt}}</div>
+                                  
+                                  <div class="ui-g-2 ui-sm-6">InChI: </div>
+                                  <div class="ui-g-10 ui-sm-6">{{chemical.Structure_InChI}}</div>
+    
+                                  
+                              </div>
+                          </div>
+                         
+      
+                          
+                      </div>
+                  </ng-template>
+      
+                </p-dataView>
+
+      
+      </div>
+      </div>
+
+
+
+
 
 
 
